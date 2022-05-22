@@ -5,7 +5,7 @@ module Api
     
       # GET /courses
       def index
-        @courses = Course.all
+        @courses = Course.all.includes(:users)
     
         render json: @courses
       end

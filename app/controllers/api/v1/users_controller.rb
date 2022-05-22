@@ -6,7 +6,7 @@ module Api
     
       # GET /users
       def index
-        @users = User.all
+        @users = User.all.includes(:roles)
     
         render json: @users
       end
