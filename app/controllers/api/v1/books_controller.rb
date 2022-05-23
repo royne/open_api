@@ -48,7 +48,7 @@ module Api
     
         # Only allow a list of trusted parameters through.
         def book_params
-          params.require(:book).permit(:name, :content)
+          params.require(:book).permit(:name, :content, :course_id)
         end
     end
     

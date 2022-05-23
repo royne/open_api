@@ -5,7 +5,7 @@ module Api
     
       # GET /courses
       def index
-        @courses = Course.all.includes(:users)
+        @courses = Course.all.includes(users: [:reading_times])
     
         render json: @courses
       end
@@ -48,7 +48,7 @@ module Api
     
         # Only allow a list of trusted parameters through.
         def course_params
-          params.require(:course).permit(:name)
+          params.require(:course).permit(:name, :book_id)
         end
     end
     

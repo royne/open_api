@@ -6,8 +6,10 @@ namespace :populating do
     course = Course.create(name: "curso #{number_course + 1}") 
     puts "create course"
 
-    book = Book.create(name: Faker::Book.title, content: Faker::Books::Lovecraft.paragraph) 
+    book = Book.create(name: Faker::Book.title, content: Faker::Books::Lovecraft.paragraph, course_id: course.id)
     puts "create book"
+    course.book = book
+    course.save! 
     
     instructor = User.new(name: Faker::Name.unique.name, password:"password")
     instructor.email = Faker::Internet.email(name: instructor.name)
